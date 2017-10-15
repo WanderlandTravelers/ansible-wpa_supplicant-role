@@ -1,2 +1,10 @@
 ---
-# vars file for wpa_supplicant
+
+wpa_unquoted:
+  - eap
+  - eapol_flags
+  - group
+  - key_mgmt
+  - pairwise
+  - priority
+  - scan_ssid

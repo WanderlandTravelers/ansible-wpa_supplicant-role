@@ -4,12 +4,4 @@ wpa_cli_reconfigure: yes
 wpa_ctrl_interface: DIR=/var/run/wpa_supplicant GROUP=netdev
 wpa_passphrase: yes
 wpa_networks: []
-wpa_unquoted:
-  - eap
-  - eapol_flags
-  - group
-  - key_mgmt
-  - pairwise
-  - priority
-  - scan_ssid
 wpa_update_config: 1
