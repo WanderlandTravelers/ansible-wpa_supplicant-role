@@ -13,26 +13,17 @@ Ansible 2.3 or higher
 Role Variables
 --------------
 
-Here is a list of variables and defaults
+Here is a list of variables you can use to control playback:
 
-wpa_cli_reconfigure: yes  # Whether or not to run `wpa_cli reconfigure` at the end
+* `wpa_cli_reconfigure`: Controls whether or not to run `wpa_cli reconfigure` at the end of playback. Defaults to `yes`
 
-wpa_ctrl_interface: DIR=/var/run/wpa_supplicant GROUP=netdev  # The value for ctrl_interface in `/etc/wpa_supplicant/wpa_supplicant.conf`
+* `wpa_ctrl_interface`: The value for `ctrl_interface` in `/etc/wpa_supplicant/wpa_supplicant.conf`. Defaults to `DIR=/var/run/wpa_supplicant GROUP=netdev`
 
-wpa_passphrase: yes  # Whether or not to run `wpa_passphrase` to encrypt network passwords
+* `wpa_passphrase`: Controls whether or not to run `wpa_passphrase` to encrypt network passwords. Defaults to `yes`
 
-wpa_networks: []  # A list of network dicts, see molecule/default/playbook.yml for examples
+* `wpa_networks`: A list of network dicts, see molecule/default/playbook.yml for examples. Defaults to `[]`
 
-wpa_unquoted:  # A list of network keys for which to wrap the values in quotes
-  - eap
-  - eapol_flags
-  - group
-  - key_mgmt
-  - pairwise
-  - priority
-  - scan_ssid
-
-wpa_update_config: 1  # The value for update_config in `/etc/wpa_supplicant/wpa_supplicant.conf`
+* `wpa_update_config`: The value for `update_config` in `/etc/wpa_supplicant/wpa_supplicant.conf`. Defaults to `1`
 
 License
 -------
