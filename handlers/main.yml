@@ -1,0 +1,8 @@
+---
+
+- name: reconfigure wpa
+  become: yes
+  command: wpa_cli reconfigure
+  async: 1
+  poll: 0
+  when: wpa_cli_reconfigure

@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Include wpa_supplicant role
+      include_role:
+        name: ansible-wpa_supplicant-role
+      vars:
+        wpa_passphrase: no
+        wpa_networks:
+          - ssid: test
+            psk: testtest

@@ -1,0 +1,26 @@
+{% if wpa_country is defined %}
+country={{ wpa_country }}
+{% endif %}
+{% if wpa_ap_scan is defined %}
+ap_scan={{ wpa_ap_scan }}
+{% endif %}
+ctrl_interface={{ wpa_ctrl_interface }}
+update_config={{ wpa_update_config }}
+
+{% for wpa_network in wpa_networks %}
+network={
+{% for wpa_network_key, wpa_network_value in wpa_network.items() %}
+{% if wpa_network_key == 'psk' and wpa_passphrase %}
+{% for wpa_passphrase in wpa_encrypted_networks.results %}
+{% if wpa_passphrase.item.ssid == wpa_network.ssid %}
+{{ wpa_passphrase.stdout | regex_search("(\tpsk.\w*)") }}
+{% endif %}
+{% endfor %}
+{% elif wpa_network_key in wpa_unquoted %}
+	{{ wpa_network_key }}={{ wpa_network_value }}
+{% else %}
+	{{ wpa_network_key }}="{{ wpa_network_value }}"
+{% endif %}
+{% endfor %}
+}
+{% endfor %}
