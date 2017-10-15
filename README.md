@@ -1,6 +1,8 @@
 Ansible wpa_supplicant role
 ===========================
 
+[![Travis](https://img.shields.io/travis/WanderlandTravelers/ansible-wpa_supplicant-role.svg)](https://travis-ci.org/WanderlandTravelers/ansible-wpa_supplicant-role)
+
 Ansible role for managing wifi networks
 
 Requirements
