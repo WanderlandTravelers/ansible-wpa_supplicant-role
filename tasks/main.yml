@@ -8,19 +8,21 @@
   with_items:
     - wpasupplicant
     - python-pip
+  when: wpa_passphrase | bool
 
 - name: Make sure pexpect is installed (for the expect module)
   pip:
     name: pexpect
     state: present
     extra_args: --user
+  when: wpa_passphrase | bool
 
 - name: Generate encrypted passphrases
   expect:
     command: wpa_passphrase {{ item.ssid }}
     responses:
       "# reading passphrase": "{{ item.psk }}"
-  when: item.psk is defined and wpa_passphrase
+  when: item.psk is defined and wpa_passphrase | bool
   with_items: "{{ wpa_networks }}"
   register: wpa_encrypted_networks
   changed_when: false
