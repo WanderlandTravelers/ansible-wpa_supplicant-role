@@ -1,5 +1,4 @@
 ---
-
 - name: Make sure the necessary packages are installed
   become: yes
   package:

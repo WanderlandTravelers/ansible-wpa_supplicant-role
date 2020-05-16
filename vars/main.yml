@@ -1,5 +1,4 @@
 ---
-
 wpa_unquoted:
   - eap
   - eapol_flags

@@ -1,31 +1,71 @@
-Ansible wpa_supplicant role
-===========================
+# Ansible Role: wpa_supplicant
 
-[![Travis](https://img.shields.io/travis/WanderlandTravelers/ansible-wpa_supplicant-role.svg)](https://travis-ci.org/WanderlandTravelers/ansible-wpa_supplicant-role) [![Ansible Role](https://img.shields.io/ansible/role/21206.svg)](https://galaxy.ansible.com/WanderlandTravelers/wpa_supplicant/)
+[![Build Status][badge-travis]][link-travis]
 
-Ansible role for managing wifi networks. Run `man wpa_supplicant.conf` for more information
+Configures wpa_supplicant for managing wifi networks.
 
-Requirements
-------------
+> Forked from https://github.com/WanderlandTravelers/ansible-wpa_supplicant-role.
 
-Ansible 2.3 or higher
+## Requirements
 
-Role Variables
---------------
+None.
 
-Here is a list of variables you can use to control playback:
+## Role Variables
 
-* `wpa_cli_reconfigure`: Controls whether or not to run `wpa_cli reconfigure` at the end of playback. Defaults to `yes`
+Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-* `wpa_ctrl_interface`: The value for `ctrl_interface` in `/etc/wpa_supplicant/wpa_supplicant.conf`. Defaults to `DIR=/var/run/wpa_supplicant GROUP=netdev`
+    wpa_cli_reconfigure: yes
 
-* `wpa_passphrase`: Controls whether or not to run `wpa_passphrase` to encrypt network passwords. Defaults to `yes`
+Whether to run `wpa_cli reconfigure` at the end of playback.
 
-* `wpa_networks`: A list of network dicts, see molecule/default/playbook.yml for examples. Defaults to `[]`
+    wpa_ctrl_interface: DIR=/var/run/wpa_supplicant GROUP=netdev
 
-* `wpa_update_config`: The value for `update_config` in `/etc/wpa_supplicant/wpa_supplicant.conf`. Defaults to `1`
+The value for `ctrl_interface` in `/etc/wpa_supplicant/wpa_supplicant.conf`.
 
-License
--------
+    wpa_passphrase: yes
 
-MIT
+Whether to run `wpa_passphrase` to encrypt network passwords.
+
+    wpa_networks: []
+
+A list of network dicts, see [tests/test.yml](tests/test.yml) for an example.
+
+    wpa_update_config: 1
+
+The value for `update_config` in `/etc/wpa_supplicant/wpa_supplicant.conf`.
+
+## Dependencies
+
+None.
+
+## Example Playbook
+
+    - hosts: servers
+      vars_files:
+        - vars/main.yml
+      roles:
+        - { role: jason-riddle.wpa_supplicant }
+
+## License
+
+[MIT][link-license]
+
+## Author Information
+
+The original role, [ansible-wpa_supplicant-role][original-role],
+was created in 2017 by [Wanderland Travelers][wanderland-travelers].
+This role was forked to
+[ansible-role-wpa_supplicant][forked-role]
+and this fork is maintained by [Jason Riddle][jason-riddle].
+
+#### Maintainer(s)
+
+- [Jason Riddle][jason-riddle]
+
+[jason-riddle]: https://github.com/jason-riddle
+[wanderland-travelers]: https://github.com/WanderlandTravelers
+[original-role]: https://github.com/WanderlandTravelers/ansible-wpa_supplicant-role
+[forked-role]: https://github.com/jason-riddle/ansible-role-wpa_supplicant
+[badge-travis]: https://travis-ci.org/jason-riddle/ansible-role-wpa_supplicant.svg?branch=master
+[link-license]: https://raw.githubusercontent.com/jason-riddle/ansible-role-wpa_supplicant/master/LICENSE
+[link-travis]: https://travis-ci.org/jason-riddle/ansible-role-wpa_supplicant

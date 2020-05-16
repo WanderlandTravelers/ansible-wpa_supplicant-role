@@ -1,5 +1,4 @@
 ---
-
 wpa_cli_reconfigure: yes
 wpa_ctrl_interface: DIR=/var/run/wpa_supplicant GROUP=netdev
 wpa_passphrase: yes

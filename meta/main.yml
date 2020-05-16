@@ -1,26 +1,16 @@
 ---
+dependencies: []
+
 galaxy_info:
-  author: Wanderland Travelers
+  author: jason-riddle
   description: Role for managing wifi networks
-
-  issue_tracker_url: https://github.com/WanderlandTravelers/ansible-wpa_supplicant-role/issues
-
   license: MIT
-
   min_ansible_version: 2.3
-
   platforms:
     - name: Debian
       versions:
-        - all
-    - name: Ubuntu
-      versions:
-        - all
-
+      - all
   galaxy_tags:
     - wifi
     - wireless
     - wpa_supplicant
-    - raspberrypi
-
-dependencies: []

@@ -1,5 +1,4 @@
 ---
-
 - name: reconfigure wpa
   become: yes
   command: wpa_cli reconfigure

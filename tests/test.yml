@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  remote_user: root
+
+  vars:
+    wpa_networks:
+      - ssid: router_ssid
+        psk: router_password
+
+  roles:
+    - ansible-role-wpa_supplicant
