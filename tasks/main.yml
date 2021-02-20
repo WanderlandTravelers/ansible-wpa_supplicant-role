@@ -5,7 +5,7 @@
   package:
     name: "{{ item }}"
     state: present
-  with_items:
+  loop:
     - wpasupplicant
     - python-pip
 
@@ -21,7 +21,7 @@
     responses:
       "# reading passphrase": "{{ item.psk }}"
   when: item.psk is defined and wpa_passphrase
-  with_items: "{{ wpa_networks }}"
+  loop: "{{ wpa_networks }}"
   register: wpa_encrypted_networks
   changed_when: false
 
