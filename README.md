@@ -19,6 +19,8 @@ Here is a list of variables you can use to control playback:
 
 * `wpa_ctrl_interface`: The value for `ctrl_interface` in `/etc/wpa_supplicant/wpa_supplicant.conf`. Defaults to `DIR=/var/run/wpa_supplicant GROUP=netdev`
 
+* `wpa_p2p_disabled`: Disable P2P functionality (WiFi Direct) when set to `1`. By default not defined, wpa_supplicant defaults to `0`
+
 * `wpa_passphrase`: Controls whether or not to run `wpa_passphrase` to encrypt network passwords. Defaults to `yes`
 
 * `wpa_networks`: A list of network dicts, see molecule/default/playbook.yml for examples. Defaults to `[]`
