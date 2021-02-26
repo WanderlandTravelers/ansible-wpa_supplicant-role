@@ -3,11 +3,10 @@
 - name: Ensure required package(s)
   become: yes
   package:
-    name: "{{ item }}"
+    name:
+      - wpasupplicant
+      - python-pip
     state: present
-  loop:
-    - wpasupplicant
-    - python-pip
 
 - name: Ensure required Python dependency # for the expect module
   pip:
