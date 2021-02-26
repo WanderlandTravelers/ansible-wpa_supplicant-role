@@ -1,6 +1,6 @@
 ---
 
-- name: reconfigure wpa
+- name: Reconfigure wpa_supplicant
   become: yes
   command: wpa_cli reconfigure
   async: 1

@@ -1,31 +1,32 @@
 ---
 
-- name: Make sure the necessary packages are installed
+- name: Ensure required package(s)
   become: yes
   package:
-    name: "{{ item }}"
+    name:
+      - wpasupplicant
+      - python-pip
     state: present
-  with_items:
-    - wpasupplicant
-    - python-pip
 
-- name: Make sure pexpect is installed (for the expect module)
+- name: Ensure required Python dependency # for the expect module
   pip:
     name: pexpect
     state: present
     extra_args: --user
 
-- name: Generate encrypted passphrases
+- name: Generate encrypted passphrase(s)
   expect:
     command: wpa_passphrase {{ item.ssid }}
     responses:
       "# reading passphrase": "{{ item.psk }}"
   when: item.psk is defined and wpa_passphrase
-  with_items: "{{ wpa_networks }}"
+  loop: "{{ wpa_networks }}"
   register: wpa_encrypted_networks
   changed_when: false
+  check_mode: no
+  no_log: true
 
-- name: Generate wpa_supplicant.conf
+- name: Generate wpa_supplicant.conf file
   become: yes
   template:
     src: templates/etc/wpa_supplicant/wpa_supplicant.conf.j2
@@ -33,4 +34,5 @@
     owner: root
     group: root
     mode: 0600
-  notify: reconfigure wpa
+  no_log: true
+  notify: Reconfigure wpa_supplicant

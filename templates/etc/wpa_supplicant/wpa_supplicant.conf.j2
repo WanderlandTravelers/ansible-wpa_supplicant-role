@@ -4,6 +4,9 @@ country={{ wpa_country }}
 {% if wpa_ap_scan is defined %}
 ap_scan={{ wpa_ap_scan }}
 {% endif %}
+{% if wpa_p2p_disabled is defined %}
+p2p_disabled={{ wpa_p2p_disabled }}
+{% endif %}
 ctrl_interface={{ wpa_ctrl_interface }}
 update_config={{ wpa_update_config }}
 
