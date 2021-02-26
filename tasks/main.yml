@@ -24,6 +24,7 @@
   loop: "{{ wpa_networks }}"
   register: wpa_encrypted_networks
   changed_when: false
+  check_mode: no
   no_log: true
 
 - name: Generate wpa_supplicant.conf file
